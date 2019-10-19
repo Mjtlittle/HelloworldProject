@@ -1,7 +1,10 @@
 import pygame
+from os import path
 from settings import *
 from sound import Sound
 from player import Player
+from tilemap import *
+from walls import *
 
 # Initialization
 class Game:
@@ -23,10 +26,15 @@ class Game:
         self.all_sprites = pygame.sprite.Group()
         self.all_sprites.add(self.player)
         self.walls = pygame.sprite.Group()
+        self.load_data()
 
     #
     # game state methods
     #
+    def load_data(self):
+        game_folder = path.dirname(__file__)
+        self.map = Map(path.join(game_folder, 'map.txt'))
+
 
     def run(self):
 
@@ -45,6 +53,13 @@ class Game:
             for event in pygame.event.get():
                 self.on_event(event)
 
+    def new(self):
+        for row, tiles in enumerate(self.map.data):
+            for col, tile in enumerate(tiles):
+                if tile == '1':
+                    Wall(self, col, row)
+        self.camera = Camera(self.map.width, self.map.height)
+
     def on_event(self, event):
 
         # when window is closed
@@ -58,7 +73,7 @@ class Game:
         # when the user releases a key
         elif event.type == pygame.KEYUP:
             self.on_keyup(event.key)
-                   
+
     def on_keydown(self, key):
         pass
 
@@ -67,7 +82,7 @@ class Game:
         # close program when click escape
         if key == pygame.K_ESCAPE:
             self.quit()
-        
+
 
     def quit(self):
         self.running = False
@@ -79,6 +94,7 @@ class Game:
 
     def update(self):
         self.all_sprites.update()
+        self.camera.update(self.player)
 
     def render(self):
 
@@ -89,7 +105,9 @@ class Game:
         self.draw_grid()
 
         # draw the sprites
-        self.all_sprites.draw(self.screen)
+        for sprite in self.all_sprites:
+            self.screen.blit(sprite.image, self.camera.apply(sprite))
+        pygame.display.flip()
 
     def handle_input(self):
         for event in pygame.event.get():
@@ -112,4 +130,5 @@ class Game:
 # Game loop
 if __name__ == '__main__':
     g = Game()
+    g.new()
     g.run()
