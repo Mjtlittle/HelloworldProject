@@ -14,9 +14,6 @@ class Game:
     def load_data(self):
         pass
 
-    def new(self):
-        pass
-
     def run(self):
         pass
 
@@ -35,5 +32,12 @@ class Game:
     def events(self):
         pass
 
+    def show_start_screen(self):
+        pass
 
 # Game loop
+g.Game()
+g.show_start_screen
+while True:
+    g.new()
+    g.run()
