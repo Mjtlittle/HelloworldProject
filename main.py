@@ -17,11 +17,13 @@ class Game:
         # game data
         self.player = Player()
 
+    def run(self):
+
+        # start game loop
+        while True:
+            self.update()
 
     def load_data(self):
-        pass
-
-    def run(self):
         pass
 
     def quit(self):
@@ -43,8 +45,6 @@ class Game:
         pass
 
 # Game loop
-g.Game()
-g.show_start_screen
-while True:
-    g.new()
-    g.run()
+g = Game()
+g.run()
+
