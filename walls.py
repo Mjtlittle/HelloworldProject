@@ -20,7 +20,7 @@ class Wall(pygame.sprite.Sprite):
         self.images.append(pygame.image.load('assets/images/tiles/death_wall.png').convert())
         self.images.append(pygame.image.load('assets/images/tiles/death_wall_nofire.png').convert())
 
-        self.image = self.images[0]
+        self.image = self.images[self.index]
         self.image = pygame.transform.rotozoom(self.image, 0, 2)
         self.rect = self.image.get_rect()
         self.rect.x = x * TILESIZE
