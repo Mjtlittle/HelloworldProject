@@ -7,7 +7,7 @@ class Wall(pygame.sprite.Sprite):
     def __init__(self, game, x, y):
         self.groups = game.all_sprites, game.walls
         pygame.sprite.Sprite.__init__(self, self.groups)
-        self.next_move = pygame.time.get_ticks() + 300  # 300ms = 0.3s
+        self.next_move = pygame.time.get_ticks() + 100  # 300ms = 0.3s
         self.game = game
 
         random_num = random.randint(0, 1)
@@ -28,7 +28,7 @@ class Wall(pygame.sprite.Sprite):
 
     def update(self):
         if pygame.time.get_ticks() >= self.next_move:
-            self.next_move = pygame.time.get_ticks() + 300  # 300ms = 0.3s
+            self.next_move = pygame.time.get_ticks() + 100  # 300ms = 0.3s
             self.index += 1
             if self.index >= len(self.images):
                 self.index = 0
