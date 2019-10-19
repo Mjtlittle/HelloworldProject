@@ -5,6 +5,7 @@ from sound import Sound
 from player import Player
 from tilemap import *
 from walls import *
+from grass import *
 
 # Initialization
 class Game:
@@ -21,9 +22,10 @@ class Game:
 
         # game data
         self.running = False
+        self.starting_x = 0
+        self.starting_y = 0
 
         self.all_sprites = pygame.sprite.Group()
-        self.all_sprites.add(self.player)
         self.walls = pygame.sprite.Group()
 
         # build and load map
@@ -44,11 +46,19 @@ class Game:
             for col, tile in enumerate(tiles):
                 if tile == '1':
                     Wall(self, row, col)
+                if tile == '.':
+                    Grass(self, row, col)
                 if tile == 'P':
-                    self.player = Player()
-        self.camera = Camera(self.map.width, self.map.height)
+                    self.starting_x = row
+                    self.starting_y = col
+
+        self.player = Player(self, self.starting_x, self.starting_y)
+
+        self.camera = Camera(self.map.height, self.map.width)
 
     def run(self):
+        # Start music!
+        self.sfx.play_battle()
 
         # start game loop
         self.running = True
