@@ -7,6 +7,7 @@ from tilemap import *
 from walls import *
 from grass import *
 from mob import *
+from end import *
 
 # Initialization
 class Game:
@@ -51,6 +52,8 @@ class Game:
                     Grass(self, col, row)
                 if tile == 'M':
                     Mob(self, col, row)
+                if tile == 'E':
+                    End(self, col, row)
                 if tile == 'P':
                     self.starting_x = col
                     self.starting_y = row
