@@ -1,12 +1,11 @@
 import pygame
 import util
-
 from sound import Sound
 
 # Initialization
 class Game:
     def __init__(self):
-        self.sfx =
+        self.sfx = 
         pygame.init()
         pygame.mixer.init()
         self.screen = pygame.display.set_mode((util.SCREEN_WIDTH, util.SCREEN_HEIGHT))
@@ -18,7 +17,16 @@ class Game:
     def new(self):
         pass
 
+    def run(self):
+        pass
+
+    def quit(self):
+        pass
+
     def update(self):
+        pass
+
+    def draw_grid(self):
         pass
 
     def draw(self):
