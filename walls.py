@@ -1,15 +1,14 @@
 import pygame
 from settings import *
 
+
 class Wall(pygame.sprite.Sprite):
     def __init__(self, game, x, y):
         self.groups = game.all_sprites, game.walls
         pygame.sprite.Sprite.__init__(self, self.groups)
         self.game = game
-        self.image = pygame.Surface((TILESIZE, TILESIZE))
-        self.image.fill(RED)
+        self.image = pygame.image.load('assets/images/tiles/tree.png')
+        self.image = pygame.transform.rotozoom(self.image, 0, 2)
         self.rect = self.image.get_rect()
-        self.x = x
-        self.y = y
         self.rect.x = x * TILESIZE
         self.rect.y = y * TILESIZE
