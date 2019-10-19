@@ -6,7 +6,7 @@ from sound import Sound
 # Initialization
 class Game:
     def __init__(self):
-        self.sfx =
+        self.sfx = Sound()
         pygame.init()
         pygame.mixer.init()
         self.screen = pygame.display.set_mode((util.SCREEN_WIDTH, util.SCREEN_HEIGHT))
