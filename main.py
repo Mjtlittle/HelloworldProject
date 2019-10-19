@@ -2,15 +2,22 @@ import pygame
 import util
 
 from sound import Sound
+from player import Player
 
 # Initialization
 class Game:
     def __init__(self):
-        self.sfx = Sound()
+
+        # pygame setup
         pygame.init()
-        pygame.mixer.init()
-        self.screen = pygame.display.set_mode((util.SCREEN_WIDTH, util.SCREEN_HEIGHT))
-        pygame.display.set_caption(util.PROJECT_NAME)
+
+        self.sfx = Sound() # setup sound
+        self.screen = pygame.display.set_mode((settings.SCREEN_WIDTH, settings.SCREEN_HEIGHT))
+        pygame.display.set_caption(settings.PROJECT_NAME) # set window caption
+
+        # game data
+        self.player = Player()
+
 
     def load_data(self):
         pass
