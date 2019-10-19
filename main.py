@@ -39,7 +39,7 @@ class Game:
         # get the map
         game_folder = path.dirname(__file__)
 
-        self.map = Map(path.join(game_folder, 'death.txt'))
+        self.map = Map(path.join(game_folder, 'death_short.txt'))
 
         # create wall sprites
         for row, tiles in enumerate(self.map.data):
@@ -49,9 +49,10 @@ class Game:
                 if tile == '.':
                     Grass(self, col, row)
                 if tile == 'P':
-                    self.starting_x = row
-                    self.starting_y = col
+                    self.starting_x = col
+                    self.starting_y = row
 
+        Grass(self, self.starting_x, self.starting_y)
         self.player = Player(self, self.starting_x, self.starting_y)
 
         self.camera = Camera(self.map.width, self.map.height)
