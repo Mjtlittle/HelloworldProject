@@ -1,14 +1,20 @@
 import pygame
-import settings
+from settings import *
 
 class Player(pygame.sprite.Sprite):
     def __init__(self):
-        super(Player, self).__init__()
+        super().__init__()
+        
         self.health = 100
         self.equipped_item = None
+        self.size = 500
+
+        # image
         self.image = pygame.image.load('assets/images/player_proto.png')
+        self.image = pygame.transform.scale(self.image, (self.size, self.size))
+
         self.rect = self.image.get_rect(
-            center=(settings.SCREEN_WIDTH / 2, settings.SCREEN_HEIGHT / 2)
+            center=(SCREEN_WIDTH / 2, SCREEN_HEIGHT / 2)
         )
 
     def update(self):
