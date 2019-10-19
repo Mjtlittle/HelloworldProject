@@ -10,11 +10,11 @@ class Game:
         # pygame setup
         pygame.init()
 
-        self.screen = pygame.display.set_mode(SCREEN_WIDTH, SCREEN_HEIGHT)
+        self.screen = pygame.display.set_mode((SCREEN_WIDTH, SCREEN_HEIGHT))
         self.clock = pygame.time.Clock()
         self.sfx = Sound()
 
-        pygame.display.set_caption(settings.PROJECT_NAME)
+        pygame.display.set_caption(PROJECT_NAME)
 
         # game data
         self.running = False
@@ -29,7 +29,7 @@ class Game:
         # start game loop
         self.running = True
         while self.running:
-            self.clock.tick(settings.FPS)
+            self.clock.tick(FPS)
             self.update()
             self.render()
 
@@ -70,15 +70,15 @@ class Game:
         pass
 
     def render(self):
-        self.screen.fill(settings.BGCOLOR)
+        self.screen.fill(BGCOLOR)
         self.draw_grid()
         pass
 
     def draw_grid(self):
-        for x in range(0, settings.SCREEN_WIDTH, settings.TILESIZE):
-            pygame.draw.line(self.screen, settings.WHITE, (x, 0), (x, settings.SCREEN_HEIGHT))
-        for y in range(0, settings.SCREEN_HEIGHT, settings.TILESIZE):
-            pygame.draw.line(self.screen, settings.WHITE, (0, y), (settings.SCREEN_WIDTH, y))
+        for x in range(0, SCREEN_WIDTH, TILESIZE):
+            pygame.draw.line(self.screen, WHITE, (x, 0), (x, SCREEN_HEIGHT))
+        for y in range(0, SCREEN_HEIGHT, TILESIZE):
+            pygame.draw.line(self.screen, WHITE, (0, y), (SCREEN_WIDTH, y))
 
     def show_start_screen(self):
         pass
