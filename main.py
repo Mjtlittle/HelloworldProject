@@ -25,12 +25,12 @@ class Game:
             self.clock.tick(settings.FPS)
             self.update()
 
-
-    def load_data(self):
-        pass
-
-    def quit(self):
-        pass
+            # event
+            for event in pygame.event.get():
+                if event.type == pygame.QUIT:
+                    raise SystemExit
+                else:
+                    self.on_event(event)
 
     def update(self):
         pass
@@ -41,7 +41,13 @@ class Game:
     def draw(self):
         pass
 
-    def events(self):
+    def on_event(self, event):
+        if event == pygame.KEYDOWN:
+            self.on_keypress(event)
+
+        pass
+    
+    def on_keypress(self, event):
         pass
 
     def show_start_screen(self):
