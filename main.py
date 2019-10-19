@@ -21,6 +21,7 @@ class Game:
         self.player = Player()
         self.all_sprites = pygame.sprite.Group()
         self.all_sprites.add(self.player)
+        self.walls = pygame.sprite.Group()
 
     #
     # game state methods
