@@ -1,5 +1,5 @@
 import pygame
-import util
+import settings
 from sound import Sound
 from player import Player
 
