@@ -26,16 +26,26 @@ class Game:
         self.all_sprites = pygame.sprite.Group()
         self.all_sprites.add(self.player)
         self.walls = pygame.sprite.Group()
-        self.load_data()
+
+        # build and load map
+        self.build_map()
 
     #
     # game state methods
     #
-    def load_data(self):
+
+    def build_map(self):
+        # get the map
         game_folder = path.dirname(__file__)
 
         self.map = Map(path.join(game_folder, 'map.txt'))
 
+        # create wall sprites
+        for row, tiles in enumerate(self.map.data):
+            for col, tile in enumerate(tiles):
+                if tile == '1':
+                    Wall(self, col, row)
+        self.camera = Camera(self.map.width, self.map.height)
 
     def run(self):
 
@@ -53,14 +63,6 @@ class Game:
             # event loop
             for event in pygame.event.get():
                 self.on_event(event)
-
-    def new(self):
-        for row, tiles in enumerate(self.map.data):
-            for col, tile in enumerate(tiles):
-                if tile == '1':
-                    Wall(self, row, col)
-
-        self.camera = Camera(self.map.width, self.map.height)
 
     def on_event(self, event):
 
