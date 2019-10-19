@@ -16,20 +16,20 @@ class Player(pygame.sprite.Sprite):
         # image
         self.stand_back = pygame.image.load('assets/images/Garyinstandback.png')
         self.stand_back = pygame.transform.rotozoom(self.stand_back, 0, 2)
-        self.stand_back = pygame.transform.rotozoom(self.stand_back, 0, 0.75)
+        self.stand_back = pygame.transform.rotozoom(self.stand_back, 0, 0.7)
 
         self.stand_front = pygame.image.load('assets/images/Garyinstandfront.png')
         self.stand_front = pygame.transform.rotozoom(self.stand_front, 0, 2)
-        self.stand_front = pygame.transform.rotozoom(self.stand_front, 0, 0.75)
+        self.stand_front = pygame.transform.rotozoom(self.stand_front, 0, 0.7)
 
         self.stand_right = pygame.image.load('assets/images/stand_right.png')
         self.stand_right = pygame.transform.rotozoom(self.stand_right, 0, 2)
-        self.stand_right = pygame.transform.rotozoom(self.stand_right, 0, 0.75)
+        self.stand_right = pygame.transform.rotozoom(self.stand_right, 0, 0.7)
 
         self.stand_left = pygame.image.load('assets/images/stand_right.png')
         self.stand_left = pygame.transform.flip(self.stand_left, 1, 0)
         self.stand_left = pygame.transform.rotozoom(self.stand_left, 0, 2)
-        self.stand_left = pygame.transform.rotozoom(self.stand_left, 0, 0.75)
+        self.stand_left = pygame.transform.rotozoom(self.stand_left, 0, 0.7)
 
         self.pressed_keys = []
 
