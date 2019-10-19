@@ -94,6 +94,13 @@ class Game:
 
     def update(self):
         self.all_sprites.update()
+
+        # Check if colliding
+        if pygame.sprite.spritecollideany(self.player, self.walls):
+            self.player.collided(True)
+        else:
+            self.player.collided(False)
+
         self.camera.update(self.player)
 
     def render(self):
