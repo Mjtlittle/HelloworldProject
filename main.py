@@ -141,5 +141,5 @@ class Game:
 # Game loop
 if __name__ == '__main__':
     g = Game()
-    g.new()
+    g.build_map()
     g.run()
