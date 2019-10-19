@@ -45,16 +45,16 @@ class Game:
         for row, tiles in enumerate(self.map.data):
             for col, tile in enumerate(tiles):
                 if tile == '1':
-                    Wall(self, row, col)
+                    Wall(self, col, row)
                 if tile == '.':
-                    Grass(self, row, col)
+                    Grass(self, col, row)
                 if tile == 'P':
                     self.starting_x = row
                     self.starting_y = col
 
         self.player = Player(self, self.starting_x, self.starting_y)
 
-        self.camera = Camera(self.map.height, self.map.width)
+        self.camera = Camera(self.map.width, self.map.height)
 
     def run(self):
         # Start music!
