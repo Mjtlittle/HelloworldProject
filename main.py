@@ -33,9 +33,14 @@ class Game:
             self.update()
             self.render()
 
+            # update display
+            pygame.display.flip()
+            
             # event loop
             for event in pygame.event.get():
                 self.on_event(event)
+
+            
 
     def on_event(self, event):
 
