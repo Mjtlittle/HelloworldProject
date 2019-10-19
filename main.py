@@ -19,6 +19,7 @@ class Game:
         # game data
         self.running = False
         self.player = Player()
+
         self.all_sprites = pygame.sprite.Group()
         self.all_sprites.add(self.player)
 
@@ -51,14 +52,22 @@ class Game:
             self.quit()
 
         # when the user presses a key
+        elif event.type == pygame.KEYDOWN:
+            self.on_keydown(event.key)
+
+        # when the user releases a key
         elif event.type == pygame.KEYUP:
             self.on_keyup(event.key)
+                   
+    def on_keydown(self, key):
+        pass
 
     def on_keyup(self, key):
 
         # close program when click escape
         if key == pygame.K_ESCAPE:
             self.quit()
+        
 
     def quit(self):
         self.running = False
@@ -72,10 +81,15 @@ class Game:
         pass
 
     def render(self):
+
+        # fill background
         self.screen.fill(BGCOLOR)
+
+        # draw the grid
         self.draw_grid()
+
+        # draw the sprites
         self.all_sprites.draw(self.screen)
-        pass
 
     def draw_grid(self):
         for x in range(0, SCREEN_WIDTH, TILESIZE):
