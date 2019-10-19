@@ -34,39 +34,12 @@ class Game:
         self.running = True
         while self.running:
             self.clock.tick(FPS)
+            self.handle_input()
             self.update()
             self.render()
 
             # update display
             pygame.display.flip()
-            # event loop
-            for event in pygame.event.get():
-                self.on_event(event)
-
-
-    def on_event(self, event):
-
-        # when window is closed
-        if event.type == pygame.QUIT:
-            self.quit()
-
-        # when the user presses a key
-        elif event.type == pygame.KEYDOWN:
-            self.on_keydown(event.key)
-
-        # when the user releases a key
-        elif event.type == pygame.KEYUP:
-            self.on_keyup(event.key)
-                   
-    def on_keydown(self, key):
-        pass
-
-    def on_keyup(self, key):
-
-        # close program when click escape
-        if key == pygame.K_ESCAPE:
-            self.quit()
-        
 
     def quit(self):
         self.running = False
@@ -77,7 +50,7 @@ class Game:
     #
 
     def update(self):
-        pass
+        self.all_sprites.update()
 
     def render(self):
 
@@ -89,6 +62,15 @@ class Game:
 
         # draw the sprites
         self.all_sprites.draw(self.screen)
+
+    def handle_input(self):
+        for event in pygame.event.get():
+            if event.type == pygame.QUIT:
+                self.quit()
+
+        # Player
+        pressed_keys = pygame.key.get_pressed()
+        self.player.load_keys(pressed_keys)
 
     def draw_grid(self):
         for x in range(0, SCREEN_WIDTH, TILESIZE):

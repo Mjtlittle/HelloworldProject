@@ -1,21 +1,27 @@
 import pygame
-from settings import *
+import settings
 
 class Player(pygame.sprite.Sprite):
     def __init__(self):
-        super().__init__()
-        
+        super(Player, self).__init__()
         self.health = 100
+        self.speed = 10
         self.equipped_item = None
-        self.size = 500
-
-        # image
+        self.pressed_keys = []
         self.image = pygame.image.load('assets/images/player_proto.png')
-        self.image = pygame.transform.scale(self.image, (self.size, self.size))
-
         self.rect = self.image.get_rect(
-            center=(SCREEN_WIDTH / 2, SCREEN_HEIGHT / 2)
+            center=(settings.SCREEN_WIDTH / 2, settings.SCREEN_HEIGHT / 2)
         )
 
     def update(self):
-        pass
+        if self.pressed_keys[pygame.K_w]:
+            self.rect.y -= self.speed
+        if self.pressed_keys[pygame.K_s]:
+            self.rect.y += self.speed
+        if self.pressed_keys[pygame.K_a]:
+            self.rect.x -= self.speed
+        if self.pressed_keys[pygame.K_d]:
+            self.rect.x += self.speed
+
+    def load_keys(self, keys):
+        self.pressed_keys = keys
