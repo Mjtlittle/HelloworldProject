@@ -65,11 +65,15 @@ class Game:
         pass
 
     def render(self):
-        #pygame.draw.rect(self.screen, (255,0,0), pygame.Rect(0,0,100,100))
+        self.screen.fill(settings.BGCOLOR)
+        self.draw_grid()
         pass
-    
+
     def draw_grid(self):
-        pass
+        for x in range(0, settings.SCREEN_WIDTH, settings.TILESIZE):
+            pygame.draw.line(self.screen, settings.WHITE, (x, 0), (x, settings.SCREEN_HEIGHT))
+        for y in range(0, settings.SCREEN_HEIGHT, settings.TILESIZE):
+            pygame.draw.line(self.screen, settings.WHITE, (0, y), (settings.SCREEN_WIDTH, y))
 
     def show_start_screen(self):
         pass
