@@ -58,7 +58,8 @@ class Game:
         for row, tiles in enumerate(self.map.data):
             for col, tile in enumerate(tiles):
                 if tile == '1':
-                    Wall(self, col, row)
+                    Wall(self, row, col)
+
         self.camera = Camera(self.map.width, self.map.height)
 
     def on_event(self, event):

@@ -50,3 +50,7 @@ class Player(pygame.sprite.Sprite):
                 self.rect.x -= 10
         else:
             self.speed = 10
+
+    def set_center(self, x, y):
+        self.rect.x = x
+        self.rect.y = y
