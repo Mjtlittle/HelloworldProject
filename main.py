@@ -21,7 +21,6 @@ class Game:
 
         # game data
         self.running = False
-        self.player = Player()
 
         self.all_sprites = pygame.sprite.Group()
         self.all_sprites.add(self.player)
@@ -44,7 +43,9 @@ class Game:
         for row, tiles in enumerate(self.map.data):
             for col, tile in enumerate(tiles):
                 if tile == '1':
-                    Wall(self, col, row)
+                    Wall(self, row, col)
+                if tile == 'P':
+                    self.player = Player()
         self.camera = Camera(self.map.width, self.map.height)
 
     def run(self):
