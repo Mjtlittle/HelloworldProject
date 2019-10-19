@@ -34,15 +34,16 @@ class Game:
         self.running = True
         while self.running:
             self.clock.tick(FPS)
+            self.handle_input()
             self.update()
             self.render()
 
             # update display
             pygame.display.flip()
+
             # event loop
             for event in pygame.event.get():
                 self.on_event(event)
-
 
     def on_event(self, event):
 
@@ -77,7 +78,7 @@ class Game:
     #
 
     def update(self):
-        pass
+        self.all_sprites.update()
 
     def render(self):
 
@@ -89,6 +90,15 @@ class Game:
 
         # draw the sprites
         self.all_sprites.draw(self.screen)
+
+    def handle_input(self):
+        for event in pygame.event.get():
+            if event.type == pygame.QUIT:
+                self.quit()
+
+        # Player
+        pressed_keys = pygame.key.get_pressed()
+        self.player.load_keys(pressed_keys)
 
     def draw_grid(self):
         for x in range(0, SCREEN_WIDTH, TILESIZE):
