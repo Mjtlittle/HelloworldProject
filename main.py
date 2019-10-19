@@ -24,7 +24,7 @@ class Game:
         while True:
             self.clock.tick(settings.FPS)
             self.update()
-
+            self.draw()
             # event
             for event in pygame.event.get():
                 if event.type == pygame.QUIT:
@@ -36,17 +36,21 @@ class Game:
         pass
 
     def draw_grid(self):
-        pass
+        for x in range(0, settings.SCREEN_WIDTH, settings.TILESIZE):
+            pygame.draw.line(self.screen, settings.WHITE, (x, 0), (x, settings.SCREEN_HEIGHT))
+        for y in range(0, settings.SCREEN_HEIGHT, settings.TILESIZE):
+            pygame.draw.line(self.screen, settings.WHITE, (0, y), (settings.SCREEN_WIDTH, y))
 
     def draw(self):
-        pass
+        self.screen.fill(settings.BGCOLOR)
+        self.draw_grid()
 
     def on_event(self, event):
         if event == pygame.KEYDOWN:
             self.on_keypress(event)
 
         pass
-    
+
     def on_keypress(self, event):
         pass
 
