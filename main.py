@@ -1,6 +1,8 @@
 import pygame
 import util
 
+from sound import Sound
+
 # Initialization
 class Game:
     def __init__(self):
