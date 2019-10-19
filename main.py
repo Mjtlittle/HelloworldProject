@@ -146,7 +146,7 @@ class Game:
         for y in range(0, SCREEN_HEIGHT, TILESIZE):
             pygame.draw.line(self.screen, WHITE, (0, y), (SCREEN_WIDTH, y))
 
-    def show_start_screen(self):
+    def show_go_screen(self):
         pass
 
 # Game loop

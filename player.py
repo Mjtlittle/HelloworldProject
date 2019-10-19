@@ -17,7 +17,7 @@ class Player(pygame.sprite.Sprite):
 
         self.pressed_keys = []
 
-        self.image = pygame.image.load('assets/images/player_proto.png')
+        self.image = pygame.image.load('assets/images/playerBig.png')
         self.rect = self.image.get_rect()
         self.rect.x = x * settings.TILESIZE
         self.rect.y = y * settings.TILESIZE
