@@ -8,7 +8,7 @@ class Grass(pygame.sprite.Sprite):
         pygame.sprite.Sprite.__init__(self, self.groups)
         self.game = game
 
-        self.image = pygame.image.load('assets/images/tiles/death_groundl.png')
+        self.image = pygame.image.load('assets/images/tiles/death_ground.png')
 
         self.image = pygame.transform.rotozoom(self.image, 0, 2)
         self.rect = self.image.get_rect()
