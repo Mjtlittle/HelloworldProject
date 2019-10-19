@@ -1,6 +1,5 @@
 import pygame
 import util
-
 from sound import Sound
 from player import Player
 
@@ -25,7 +24,16 @@ class Game:
     def new(self):
         pass
 
+    def run(self):
+        pass
+
+    def quit(self):
+        pass
+
     def update(self):
+        pass
+
+    def draw_grid(self):
         pass
 
     def draw(self):
