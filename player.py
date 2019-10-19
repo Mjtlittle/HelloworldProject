@@ -18,6 +18,7 @@ class Player(pygame.sprite.Sprite):
         self.pressed_keys = []
 
         self.image = pygame.image.load('assets/images/playerBig.png')
+        self.image = pygame.transform.rotozoom(self.image, 0, 0.5)
         self.rect = self.image.get_rect()
         self.rect.x = x * settings.TILESIZE
         self.rect.y = y * settings.TILESIZE
