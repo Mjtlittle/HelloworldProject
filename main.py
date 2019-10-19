@@ -33,6 +33,7 @@ class Game:
     #
     def load_data(self):
         game_folder = path.dirname(__file__)
+
         self.map = Map(path.join(game_folder, 'map.txt'))
 
 
