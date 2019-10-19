@@ -7,13 +7,13 @@ class Player(pygame.sprite.Sprite):
         self.health = 100
         self.speed = 10
         self.equipped_item = None
-<<<<<<< HEAD
+
         self.size = 64
 
         # image
-=======
+
         self.pressed_keys = []
->>>>>>> 0b10a800e7b5e4fb068ac88ba108777421d65c06
+
         self.image = pygame.image.load('assets/images/player_proto.png')
         self.rect = self.image.get_rect(
             center=(settings.SCREEN_WIDTH / 2, settings.SCREEN_HEIGHT / 2)
