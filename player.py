@@ -7,7 +7,7 @@ class Player(pygame.sprite.Sprite):
         
         self.health = 100
         self.equipped_item = None
-        self.size = 500
+        self.size = 64
 
         # image
         self.image = pygame.image.load('assets/images/player_proto.png')
