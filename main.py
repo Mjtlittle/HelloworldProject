@@ -49,8 +49,8 @@ class Game:
                 if tile == '.':
                     Grass(self, col, row)
                 if tile == 'P':
-                    self.starting_x = row
-                    self.starting_y = col
+                    self.starting_x = col
+                    self.starting_y = row
 
         self.player = Player(self, self.starting_x, self.starting_y)
 
