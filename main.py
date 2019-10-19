@@ -13,6 +13,7 @@ class Game:
         self.sfx = Sound() # setup sound
         self.screen = pygame.display.set_mode((settings.SCREEN_WIDTH, settings.SCREEN_HEIGHT))
         pygame.display.set_caption(settings.PROJECT_NAME) # set window caption
+        self.clock = pygame.time.Clock()
 
         # game data
         self.player = Player()
@@ -21,7 +22,9 @@ class Game:
 
         # start game loop
         while True:
+            self.clock.tick(settings.FPS)
             self.update()
+
 
     def load_data(self):
         pass
@@ -47,4 +50,3 @@ class Game:
 # Game loop
 g = Game()
 g.run()
-
