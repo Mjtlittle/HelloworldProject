@@ -5,7 +5,7 @@ RED = (255, 0, 0)
 GREEN = (30, 105, 61)
 
 #Screen settings
-PROJECT_NAME = 'Prototype'
+PROJECT_NAME = 'Death Maze'
 SCREEN_WIDTH = 1024
 SCREEN_HEIGHT = 768
 FPS = 60

@@ -8,4 +8,4 @@ class Sound():
         self.battle_sound = pygame.mixer.Sound('assets/sfx/battle_sound.ogg')
 
     def play_battle(self):
-        self.battle_sound.play(0)
+        self.battle_sound.play(-1)
