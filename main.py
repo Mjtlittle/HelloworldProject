@@ -10,29 +10,63 @@ class Game:
         # pygame setup
         pygame.init()
 
-        self.sfx = Sound() # setup sound
         self.screen = pygame.display.set_mode((settings.SCREEN_WIDTH, settings.SCREEN_HEIGHT))
-        pygame.display.set_caption(settings.PROJECT_NAME) # set window caption
         self.clock = pygame.time.Clock()
+        self.sfx = Sound()
+
+        pygame.display.set_caption(settings.PROJECT_NAME)
 
         # game data
+        self.running = False
         self.player = Player()
+
+    #
+    # game state methods
+    #
 
     def run(self):
 
         # start game loop
-        while True:
+        self.running = True
+        while self.running:
             self.clock.tick(settings.FPS)
             self.update()
-            self.draw()
-            # event
+            self.render()
+
+            # event loop
             for event in pygame.event.get():
-                if event.type == pygame.QUIT:
-                    raise SystemExit
-                else:
-                    self.on_event(event)
+                self.on_event(event)
+
+    def on_event(self, event):
+
+        # when window is closed
+        if event.type == pygame.QUIT:
+            self.quit()
+
+        # when the user presses a key
+        elif event.type == pygame.KEYUP:
+            self.on_keyup(event.key)
+
+    def on_keyup(self, key):
+
+        # close program when click escape
+        if key == pygame.K_ESCAPE:
+            self.quit()
+
+    def quit(self):
+        self.running = False
+        pygame.quit()
+
+    #
+    # rendering and game logic
+    #
 
     def update(self):
+        pass
+
+    def render(self):
+        self.screen.fill(settings.BGCOLOR)
+        self.draw_grid()
         pass
 
     def draw_grid(self):
@@ -41,22 +75,10 @@ class Game:
         for y in range(0, settings.SCREEN_HEIGHT, settings.TILESIZE):
             pygame.draw.line(self.screen, settings.WHITE, (0, y), (settings.SCREEN_WIDTH, y))
 
-    def draw(self):
-        self.screen.fill(settings.BGCOLOR)
-        self.draw_grid()
-
-    def on_event(self, event):
-        if event == pygame.KEYDOWN:
-            self.on_keypress(event)
-
-        pass
-
-    def on_keypress(self, event):
-        pass
-
     def show_start_screen(self):
         pass
 
 # Game loop
-g = Game()
-g.run()
+if __name__ == '__main__':
+    g = Game()
+    g.run()
