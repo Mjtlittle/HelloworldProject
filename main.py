@@ -1,5 +1,5 @@
 import pygame
-import settings
+from settings import *
 from sound import Sound
 from player import Player
 
@@ -10,7 +10,7 @@ class Game:
         # pygame setup
         pygame.init()
 
-        self.screen = pygame.display.set_mode((settings.SCREEN_WIDTH, settings.SCREEN_HEIGHT))
+        self.screen = pygame.display.set_mode(SCREEN_WIDTH, SCREEN_HEIGHT)
         self.clock = pygame.time.Clock()
         self.sfx = Sound()
 
