@@ -22,6 +22,7 @@ class Game:
 
         self.all_sprites = pygame.sprite.Group()
         self.all_sprites.add(self.player)
+        self.walls = pygame.sprite.Group()
 
     #
     # game state methods
@@ -38,12 +39,10 @@ class Game:
 
             # update display
             pygame.display.flip()
-            
             # event loop
             for event in pygame.event.get():
                 self.on_event(event)
 
-            
 
     def on_event(self, event):
 
