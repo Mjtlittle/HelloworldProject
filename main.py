@@ -19,6 +19,8 @@ class Game:
         # game data
         self.running = False
         self.player = Player()
+        self.all_sprites = pygame.sprite.Group()
+        self.all_sprites.add(self.player)
 
     #
     # game state methods
@@ -72,6 +74,7 @@ class Game:
     def render(self):
         self.screen.fill(BGCOLOR)
         self.draw_grid()
+        self.all_sprites.draw(self.screen)
         pass
 
     def draw_grid(self):
