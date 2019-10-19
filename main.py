@@ -6,6 +6,7 @@ from player import Player
 from tilemap import *
 from walls import *
 from grass import *
+from mob import *
 
 # Initialization
 class Game:
@@ -48,6 +49,8 @@ class Game:
                     Wall(self, col, row)
                 if tile == '.':
                     Grass(self, col, row)
+                if tile == 'M':
+                    Mob(self, col, row)
                 if tile == 'P':
                     self.starting_x = col
                     self.starting_y = row

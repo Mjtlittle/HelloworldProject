@@ -1,16 +1,16 @@
 import pygame
 from settings import *
 
+
 class Mob(pygame.sprite.Sprite):
     def __init__(self, game, x, y):
-
-        #groups
-        self.groups = game.all_sprites
+        self.groups = game.all_sprites, game.walls
         pygame.sprite.Sprite.__init__(self, self.groups)
+        self.game = game
 
-        #mob sprite variables
-        self.image = pygame.Surface((TILESIZE, TILESIZE))
+        self.image = pygame.image.load('assets/images/tiles/good_spong.png')
+
+        self.image = pygame.transform.rotozoom(self.image, 0, 2)
         self.rect = self.image.get_rect()
-
-    def update(self):
-        pass
+        self.rect.x = x * TILESIZE
+        self.rect.y = y * TILESIZE
